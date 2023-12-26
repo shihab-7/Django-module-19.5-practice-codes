@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+
+{%if messages%}
+    {% for m in messages%}
+    <h4 class="text-{{m.tags}} bg-white text-center" style="border-radius:7px;">{{m}}</h4>
+    {%endfor%}
+{%endif%}
+
+<h1> inside home </h1>
+
+<div class="container mt-5 p-5">
+    <h1>Directory Info : </h1>
+      <table class="table caption-top">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Musician Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Album Rtaing</th>
+              <th scope="col">Instrument Type</th>
+              <th scope="col">Album Name</th>
+              <th scope="col">Release Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for elements in data %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{elements.musician.first_name}} {{elements.musician.last_name}}</td>
+              <td>{{elements.musician.email}}</td>
+              <td>{{elements.rating}}</td>
+              <td>{{elements.musician.instrument_type}}</td>
+              <td>{{elements.album_name}}</td>
+              <td>{{elements.release_date}}</td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+  </div>
+
+
+{% endblock%}
